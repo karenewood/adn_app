@@ -4,7 +4,7 @@
     <list default="true" id="accaee47-a08a-4488-975f-2d9a26147f83" name="Default" comment="" />
     <ignored path="adn_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/README.md" changelist="accaee47-a08a-4488-975f-2d9a26147f83" time="1373396255179" ignored="false" />
+    <file path="/README.md" changelist="accaee47-a08a-4488-975f-2d9a26147f83" time="1373398613464" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="170" selection-end="170" vertical-scroll-proportion="0.13776337">
+            <state line="3" column="15" selection-start="94" selection-end="94" vertical-scroll-proportion="0.08265802">
               <folding />
             </state>
           </provider>
@@ -355,7 +355,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="170" selection-end="170" vertical-scroll-proportion="0.13776337">
+        <state line="3" column="15" selection-start="94" selection-end="94" vertical-scroll-proportion="0.08265802">
           <folding />
         </state>
       </provider>
