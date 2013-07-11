@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def avantages
   end
+
+  def signin
+  end
 end
