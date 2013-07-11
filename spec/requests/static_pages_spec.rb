@@ -29,7 +29,7 @@ describe "Static pages" do
   describe "Signin_page" do
     before { visit signin_path }
 
-    it { should have_selector('h1',    text: 'Sign-In') }
-    it { should have_selector('title', text: full_title('Sign-In')) }
+    it { should have_selector('h1',    text: 'Ouverture de session') }
+    it { should have_selector('title', text: full_title('Ouverture de session')) }
   end
 end
