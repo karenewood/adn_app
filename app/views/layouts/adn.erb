@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+    <script>
+    function init()
+    {
+        $("athlete_menu").hide();
+    }
+    </script>
+    <body onload="init()">
+    <%= render 'layouts/header' %>
+    <div class="container-fluid" id="athlete_menu">
+      <div class="span3">
+        <%= cookies[:sessionid] %>
+          <div class="well sidebar-nav" >
+            <%= if is_athlete(cookies[:sessionid])
+              render :partial => 'layouts/menu/athlete'
+            end %>
+            <%= if is_admin(cookies[:sessionid])
+              render :partial => 'layouts/menu/admin'
+            end %>
+            <%= if is_professional(cookies[:sessionid])
+              render :partial => 'layouts/menu/professional'
+            end %>
+            <%= if is_director(cookies[:sessionid])
+              render :partial => 'layouts/menu/director'
+            end %>
+            <%= if is_trainer(cookies[:sessionid])
+              render :partial => 'layouts/menu/trainer'
+            end %>
+          </div>
+        </div>
+        <div class="span8">
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+  </body>
+</html>

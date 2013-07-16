@@ -5,6 +5,8 @@ AdnApp::Application.routes.draw do
   match '/decouvrir',    to: 'static_pages#decouvrir'
   match '/avantages',   to: 'static_pages#avantages'
   match '/signin', to: 'static_pages#signin'
+  match '/dashboard', to: 'adn#dashboard'
+  match '/do_login', to: 'adn#do_login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  include ApplicationHelper
   def home
   end
 
@@ -10,4 +11,5 @@ class StaticPagesController < ApplicationController
 
   def signin
   end
+  
 end
