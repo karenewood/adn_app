@@ -1,5 +1,7 @@
 AdnApp::Application.routes.draw do
 
+  get "users/new"
+
   root :to => 'static_pages#home'
 
   match '/decouvrir',    to: 'static_pages#decouvrir'
