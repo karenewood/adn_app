@@ -1,0 +1,19 @@
+<% provide(:title, "Ouverture de session") %>
+<h1>Ouverture de session</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email, "Courriel" %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password, "Mot de passe" %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Ouverture de session", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <p>Nouvel utilisateur? <%= link_to "Inscrivez-vous maintenant!", inscription_path %></p>
+  </div>
+</div>

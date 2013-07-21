@@ -1,9 +1,12 @@
 AdnApp::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 
   match '/inscription',  to: 'users#new'
+  match '/ouverture',  to: 'sessions#new'
+  match '/fermeture', to: 'sessions#destroy', via: :delete
   match '/decouvrir',    to: 'static_pages#decouvrir'
   match '/avantages',   to: 'static_pages#avantages'
   match '/ouverture', to: 'static_pages#ouverture'
