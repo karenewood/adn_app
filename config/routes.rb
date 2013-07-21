@@ -1,12 +1,12 @@
 AdnApp::Application.routes.draw do
+  resources :users
 
-  get "users/new"
+  root to: 'static_pages#home'
 
-  root :to => 'static_pages#home'
-
+  match '/inscription',  to: 'users#new'
   match '/decouvrir',    to: 'static_pages#decouvrir'
   match '/avantages',   to: 'static_pages#avantages'
-  match '/signin', to: 'static_pages#signin'
+  match '/ouverture', to: 'static_pages#ouverture'
   match '/dashboard', to: 'adn#dashboard'
   match '/do_login', to: 'adn#do_login'
 

@@ -1,0 +1,7 @@
+<% provide(:title, 'Ouverture de session') %>
+<%= form_tag( {:action => 'do_login', :controller => 'adn'}, :class=> "form-signin") do %>
+<h2 class="form-signin-heading">Ouverture de session</h2>
+<%= text_field(:login, :user, :placeholder => "Email/Userid", :class => "input-block-level") %></br>
+<%= password_field( :password, :placeholder => "Password", :class => "input-block-level") %></br>
+<%= submit_tag("Login", :class => "btn btn-large btn-primary") %>
+<% end %>
