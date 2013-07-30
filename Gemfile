@@ -14,7 +14,7 @@ group :development, :test do
   gem 'annotate', '2.5.0'
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
-  #gem 'rmagick', '2.13.2'
+  gem 'rmagick', '2.13.2'
 
 end
 
