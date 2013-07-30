@@ -1,0 +1,13 @@
+<% provide(:title, 'Index des tests') %>
+<h1>Index des tests</h1>
+
+<ul class="eval_tests">
+  <% @eval_tests.each do |eval_test| %>
+    <li>
+      <%= link_to eval_test.name, eval_test %> cree par:
+      <%= link_to eval_test.user.name, eval_test.user %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Creez un nouveau test", nouveau_test_path, class: "btn btn-large btn-primary" %>

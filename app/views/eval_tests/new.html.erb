@@ -1,0 +1,26 @@
+<% provide(:title, 'Nouveau Test') %>
+<h1>Nouveau Test d'Evaluation</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@eval_test) do |f| %>
+    <%= render 'shared/eval_test_error_messages' %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+
+      <%= f.label :image, accept: 'image/png,image/jpeg'%>
+      <%= f.file_field :image %>
+
+      <%= f.label :video, "Video Youtube" %>
+      <%= f.text_field :video %>
+
+      <br />
+
+      <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

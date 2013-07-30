@@ -1,0 +1,52 @@
+<% provide(:title, "Modifier Test") %>
+<h1>Modifier le Test</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@eval_test) do |f| %>
+      <%= render 'shared/eval_test_error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+
+      <%= f.label :image %>
+      <%= image_tag @eval_test.image.url(:medium) %>
+      </br> 
+      </br>
+      Changez l'image:
+      </br>
+      <%= f.file_field :image %>
+      </br>
+      </br>
+      Changez ou ajouter un video:
+      </br>
+      <%= f.label :video %>
+      <%= f.text_field :video %>
+      </br>
+      </br>
+      <% if @eval_test.video? %> 
+        <p><%= raw(youtube_embed(@eval_test.video)) %></p>
+      </br>
+      </br>
+      <% end %>
+      </br>
+      Ajouter les exercices recommandes pour ce test:
+      </br>
+      <%= hidden_field_tag "eval_test[exercise_ids][]", nil %>
+      <% Exercise.all.each do |exercise| %>
+      <%= check_box_tag "eval_test[exercise_ids][]", exercise.id, @eval_test.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
+      <%= label_tag dom_id(exercise), exercise.name %>
+      <% end %>
+    </br>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    </br>
+    </br>
+      <%= link_to "Canceller et retourner a la liste de tests", eval_tests_path %>
+    <% end %>
+
+  </div>
+</div>

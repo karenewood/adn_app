@@ -1,0 +1,44 @@
+<% provide(:title, @eval_test.name) %>
+<h1> Test: <%= @eval_test.name %></h1>
+</br>
+</br>
+<%= image_tag @eval_test.image.url(:medium) %>
+</br>
+</br>
+<b>Description: </b><%= @eval_test.description %>
+</br>
+</br>
+<% if @eval_test.video? %>
+     <b>Video:</b>
+     </br>
+	<p><%= raw(youtube_embed(@eval_test.video)) %></p>
+	</br>
+<% else %>
+  <b>Il ny a pas de video liee avec ce test</b>
+  </br>
+  </br>
+<% end %>
+<% if @eval_test.exercises.count > 1 %>
+  <b>Ces exercices sont prescrites en cas dechec:</b>
+<% elsif @eval_test.exercises.count == 1 %>
+  <b>Cette exercice est prescrite en cas dechec:</b>
+<% else @eval_test.exercises.count == 0 %>
+  <b>Il ny a pas dexercice liee avec ce test</b>
+<% end %>
+</br>
+<% @eval_test.exercises.each do |exercise| %>
+      -
+      <%= link_to exercise.name, exercise %>
+      </br>
+      <% end %>
+</br>   
+<b>Proprietaire:</b> <%= link_to @eval_test.user.name, @eval_test.user %>
+</br>
+</br>
+	<% if correct_test_user?(@eval_test.id) %>
+    <%= link_to "modifier", modifier_test_path(:id => @eval_test.id) %>
+    <%= link_to "supprimer", @eval_test, :confirm => 'Supprimez le test?', method: :delete %>
+	</br>
+	</br>
+	<% end %>
+<%= link_to "Retour a la liste de tests", eval_tests_path %>

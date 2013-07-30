@@ -27,6 +27,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:eval_tests) }
 
   it { should be_valid }
 
@@ -126,5 +127,20 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+  
+  #describe "eval_test associations" do
+
+    #before { @user.save }
+    #let!(:older_eval_test) do 
+      #FactoryGirl.create(:eval_test, user: @user, created_at: 1.day.ago)
+    #end
+    #let!(:newer_eval_test) do
+      #FactoryGirl.create(:eval_test, user: @user, created_at: 1.hour.ago)
+    #end
+
+    #it "should have the right eval_test in the right order" do
+      #@user.eval_tests.should == [newer_eval_test, older_eval_test]
+    #end
+  #end
   
 end

@@ -30,6 +30,8 @@ describe "Authentication" do
           it { should have_selector('title', text: user.name) }
           it { should have_link('Profile', href: user_path(user)) }
           it { should have_link('Fermeture de session', href: fermeture_path) }
+          it { should have_link('Tests', href: fermeture_path) }
+          it { should have_link('Exercices', href: fermeture_path) }
           it { should_not have_link('Ouerture de session', href: ouverture_path) }
 
           describe "followed by Fermeture de session" do

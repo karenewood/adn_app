@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+
+  factory :eval_test do
+    name "Evaluation Test"
+    description "This is how you do it do it!!"
+    user
+  end
 end

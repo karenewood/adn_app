@@ -1,0 +1,13 @@
+<% provide(:title, 'Index des Exercises') %>
+<h1>Index des exercises</h1>
+
+<ul class="exercises">
+  <% @exercises.each do |exercise| %>
+    <li>
+      <%= link_to exercise.name, exercise %> cree par:
+      <%= link_to exercise.user.name, exercise.user %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Creez une nouvelle exercise", nouvelle_exercise_path, class: "btn btn-large btn-primary" %>

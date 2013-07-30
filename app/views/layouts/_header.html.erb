@@ -10,6 +10,18 @@
           <% if signed_in? %>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Evaluations <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Tests", eval_tests_path %></li>
+                <li><%= link_to "Exercices", exercises_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Evaluations", '#' %></li>
+                <li><%= link_to "Programmes", '#' %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">

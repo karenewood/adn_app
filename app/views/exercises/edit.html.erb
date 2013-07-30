@@ -1,0 +1,43 @@
+<% provide(:title, "Modifier Exercise") %>
+<h1>Modifier Exercise</h1>
+
+<div class="row">
+<div class="span6 offset3">
+    <%= form_for(@exercise) do |f| %>
+      <%= render 'shared/exercise_error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+
+      <%= f.label :image %>
+      <%= image_tag @exercise.image.url(:medium) %>
+      </br> 
+      </br>
+      Changez l'image:
+      </br>
+      <%= f.file_field :image %>
+      </br>
+      </br>
+      Changez ou ajouter un video:
+      </br>
+      <%= f.label :video %>
+      <%= f.text_field :video %>
+      </br>
+      </br>
+      <% if @exercise.video? %> 
+        <p><%= raw(youtube_embed(@exercise.video)) %></p>
+      </br>
+      </br>
+      <% end %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      </br>
+      </br>
+      <%= link_to "Canceller et retourner a la liste d exercises", exercises_path %>
+    <% end %>
+
+  </div>
+</div>

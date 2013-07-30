@@ -1,0 +1,45 @@
+<% provide(:title, @exercise.name) %>
+<h1>Exercice: <%= @exercise.name %></h1>
+</br>
+</br>
+<%= image_tag @exercise.image.url(:medium) %>
+</br>
+</br>
+<b>Description: <%= @exercise.description %></b>
+</br>
+</br>
+<% if @exercise.video? %>
+     Video:
+     </br>
+	<p><%= raw(youtube_embed(@exercise.video)) %></p>
+	</br>
+	<% else %>
+  <b>Il ny a pas de video liee avec ce test</b>
+  </br>
+  </br>
+<% end %>
+
+<% if @exercise.eval_tests.count > 1 %>
+  <b>Ces exercices sont prescrites pour ces tests:</b>
+<% elsif @exercise.eval_tests.count == 1 %>
+  <b>Cette exercice est prescrite pour ce test:</b>
+<% else @exercise.eval_tests.count == 0 %>
+  <b>Il ny a pas de test liee avec cette exercice.</b>
+<% end %>
+</br>
+<% @exercise.eval_tests.each do |exercise| %>
+      -
+      <%= link_to exercise.name, exercise %>
+      </br>
+<% end %>
+</br>
+<b>Proprietaire: <%= @exercise.user.name %></b>
+</br>
+</br>
+	<% if correct_exercise_user?(@exercise.id) %>
+    <%= link_to "modifier", modifier_exercise_path(:id => @exercise.id) %>
+    <%= link_to "supprimer", @exercise, :confirm => 'Supprimez le test?', method: :delete %>
+	</br>
+	</br>
+	<% end %>
+<%= link_to "Retour a la liste d exercises", exercises_path %>
