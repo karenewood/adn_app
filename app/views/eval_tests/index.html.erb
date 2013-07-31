@@ -4,8 +4,13 @@
 <ul class="eval_tests">
   <% @eval_tests.each do |eval_test| %>
     <li>
+      <%= image_tag eval_test.image.url(:thumbnail) %>
       <%= link_to eval_test.name, eval_test %> cree par:
       <%= link_to eval_test.user.name, eval_test.user %>
+      <% if correct_test_user?(eval_test.id) %>
+        <%= link_to "(modifier,", modifier_test_path(:id => eval_test.id) %>
+        <%= link_to "supprimer)", eval_test, :confirm => 'Supprimez le test?', method: :delete %>
+      <% end %>
     </li>
   <% end %>
 </ul>

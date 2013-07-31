@@ -38,7 +38,7 @@
 </br>
 	<% if correct_exercise_user?(@exercise.id) %>
     <%= link_to "modifier", modifier_exercise_path(:id => @exercise.id) %>
-    <%= link_to "supprimer", @exercise, :confirm => 'Supprimez le test?', method: :delete %>
+    <%= link_to "supprimer", @exercise, :confirm => 'Supprimez exercice?', method: :delete %>
 	</br>
 	</br>
 	<% end %>
