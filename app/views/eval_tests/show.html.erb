@@ -27,7 +27,7 @@
 <% end %>
 </br>
 <% @eval_test.exercises.each do |exercise| %>
-      -
+      <%= image_tag exercise.image.url(:thumbnail) %>
       <%= link_to exercise.name, exercise %>
       </br>
       <% end %>

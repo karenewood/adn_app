@@ -1,0 +1,27 @@
+<% provide(:title, 'Nouvelle Evaluation') %>
+<h1>Nouvelle Evaluation</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@evaluation) do |f| %>
+    <%= render 'shared/evaluation_error_messages' %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+
+      <%= hidden_field_tag "evaluation[eval_test_ids][]", nil %>
+      <% EvalTest.all.each do |eval_test| %>
+      <%= image_tag eval_test.image.url(:thumbnail) %>
+      <%= check_box_tag "evaluation[eval_test_ids][]", eval_test.id, @evaluation.eval_test_ids.include?(eval_test.id), id: dom_id(eval_test) %>
+      <%= label_tag dom_id(eval_test), eval_test.name %>
+      </br>
+      <% end %>
+      <br />
+
+      <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :eval_tests
   has_many :exercises
+  has_many :evaluations
+  has_many :programmes
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

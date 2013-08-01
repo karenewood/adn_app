@@ -1,0 +1,33 @@
+<% provide(:title, @programme.name) %>
+<h1> Programme: <%= @programme.name %></h1>
+</br>
+</br>
+<b>Description: </b><%= @programme.description %>
+</br>
+</br>
+<% if @programme.exercises.count > 1 %>
+  <b>Ces exercices sont inclus dans ce programme:</b>
+<% elsif @programme.exercises.count == 1 %>
+  <b>Cette exercice est inclus dans ce programme:</b>
+<% else @programme.exercises.count == 0 %>
+  <b>Il ny a pas d exercice inclus dans ce programme</b>
+<% end %>
+</br>
+<% @programme.exercises.each do |exercice| %>
+      -
+      <%= image_tag exercice.image.url(:thumbnail) %>
+      <%= link_to exercice.name, exercice %> cree par:
+      <%= link_to exercice.user.name, exercice.user %>
+      </br>
+      <% end %>
+</br>   
+<b>Proprietaire:</b> <%= link_to @programme.user.name, @programme.user %>
+</br>
+</br>
+	<% if correct_programme_user?(@programme.id) %>
+    <%= link_to "modifier", modifier_programme_path(:id => @programme.id) %>
+    <%= link_to "supprimer", @programme, :confirm => 'Supprimez le programme?', method: :delete %>
+	</br>
+	</br>
+	<% end %>
+<%= link_to "Retour a la liste de programmes", programmes_path %>

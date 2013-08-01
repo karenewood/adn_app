@@ -1,0 +1,17 @@
+<% provide(:title, 'Index des programmes') %>
+<h1>Index des programmes</h1>
+
+<ul class="programmes">
+  <% @programmes.each do |programme| %>
+    <li>
+      <%= link_to programme.name, programme %> cree par:
+      <%= link_to programme.user.name, programme.user %>
+      <% if correct_programme_user?(programme.id) %>
+        <%= link_to "(modifier,", modifier_programme_path(:id => programme.id) %>
+        <%= link_to "supprimer)", programme, :confirm => 'Supprimez le programme?', method: :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Creez une nouveau programme", nouveau_programme_path, class: "btn btn-large btn-primary" %>

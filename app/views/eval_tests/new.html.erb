@@ -19,7 +19,17 @@
       <%= f.text_field :video %>
 
       <br />
-
+      Ajouter les exercices recommandes pour ce test:
+      </br>
+      </br>
+      <%= hidden_field_tag "eval_test[exercise_ids][]", nil %>
+      <% Exercise.all.each do |exercise| %>
+      <%= image_tag exercise.image.url(:thumbnail) %>
+      <%= check_box_tag "eval_test[exercise_ids][]", exercise.id, @eval_test.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
+      <%= label_tag dom_id(exercise), exercise.name %>
+      </br>
+      <% end %>
+      <br />
       <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

@@ -1,23 +1,13 @@
 AdnApp::Application.routes.draw do
 
-  get "exercises/new"
-
-  get "exercises/create"
-
-  get "exercises/update"
-
-  get "exercises/edit"
-
-  get "exercises/destroy"
-
-  get "exercises/index"
-
-  get "exercises/show"
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :eval_tests
   resources :exercises
+  resources :evaluations
+  resources :programmes
+
+
 
 
   root to: 'static_pages#home'
@@ -34,6 +24,10 @@ AdnApp::Application.routes.draw do
   match '/modifier_test', to: 'eval_tests#edit'
   match '/nouvelle_exercise', to: 'exercises#new'
   match '/modifier_exercise', to: 'exercises#edit'
+  match '/nouvelle_evaluation', to: 'evaluations#new'
+  match '/modifier_evaluation', to: 'evaluations#edit'
+  match '/nouveau_programme', to: 'programmes#new'
+  match '/modifier_programme', to: 'programmes#edit'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

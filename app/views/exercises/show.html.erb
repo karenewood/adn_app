@@ -20,16 +20,16 @@
 <% end %>
 
 <% if @exercise.eval_tests.count > 1 %>
-  <b>Ces exercices sont prescrites pour ces tests:</b>
+  <b>Cette exercice est prescrite pour les tests svivantes:</b>
 <% elsif @exercise.eval_tests.count == 1 %>
   <b>Cette exercice est prescrite pour ce test:</b>
 <% else @exercise.eval_tests.count == 0 %>
   <b>Il ny a pas de test liee avec cette exercice.</b>
 <% end %>
 </br>
-<% @exercise.eval_tests.each do |exercise| %>
-      -
-      <%= link_to exercise.name, exercise %>
+<% @exercise.eval_tests.each do |eval_test| %>
+      <%= image_tag eval_test.image.url(:thumbnail) %>
+      <%= link_to eval_test.name, eval_test %>
       </br>
 <% end %>
 </br>

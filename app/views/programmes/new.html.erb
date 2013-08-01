@@ -1,0 +1,27 @@
+<% provide(:title, 'Nouveau Programme') %>
+<h1>Nouveau Programme</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@programme) do |f| %>
+    <%= render 'shared/programme_error_messages' %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+
+      <%= hidden_field_tag "programme[exercise_ids][]", nil %>
+      <% Exercise.all.each do |exercise| %>
+      <%= image_tag exercise.image.url(:thumbnail) %>
+      <%= check_box_tag "programme[exercise_ids][]", exercise.id, @programme.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
+      <%= label_tag dom_id(exercise), exercise.name %>
+      </br>
+      <% end %>
+      <br />
+
+      <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

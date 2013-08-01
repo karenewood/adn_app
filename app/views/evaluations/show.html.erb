@@ -1,0 +1,33 @@
+<% provide(:title, @evaluation.name) %>
+<h1> Evaluation: <%= @evaluation.name %></h1>
+</br>
+</br>
+<b>Description: </b><%= @evaluation.description %>
+</br>
+</br>
+<% if @evaluation.eval_tests.count > 1 %>
+  <b>Ces tests sont inclus dans cette evaluation:</b>
+<% elsif @evaluation.eval_tests.count == 1 %>
+  <b>Ce test est inclus dans cette evaluation:</b>
+<% else @evaluation.eval_tests.count == 0 %>
+  <b>Il ny a pas de test inclus dans cette evaluation</b>
+<% end %>
+</br>
+<% @evaluation.eval_tests.each do |eval_test| %>
+      -
+      <%= image_tag eval_test.image.url(:thumbnail) %>
+      <%= link_to eval_test.name, eval_test %> cree par:
+      <%= link_to eval_test.user.name, eval_test.user %>
+      </br>
+      <% end %>
+</br>   
+<b>Proprietaire:</b> <%= link_to @evaluation.user.name, @evaluation.user %>
+</br>
+</br>
+	<% if correct_evaluation_user?(@evaluation.id) %>
+    <%= link_to "modifier", modifier_evaluation_path(:id => @evaluation.id) %>
+    <%= link_to "supprimer", @evaluation, :confirm => 'Supprimez l evaluation?', method: :delete %>
+	</br>
+	</br>
+	<% end %>
+<%= link_to "Retour a la liste d evaluations", evaluations_path %>

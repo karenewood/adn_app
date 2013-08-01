@@ -1,0 +1,17 @@
+<% provide(:title, 'Index des evaluations') %>
+<h1>Index des evaluations</h1>
+
+<ul class="evaluations">
+  <% @evaluations.each do |evaluation| %>
+    <li>
+      <%= link_to evaluation.name, evaluation %> cree par:
+      <%= link_to evaluation.user.name, evaluation.user %>
+      <% if correct_evaluation_user?(evaluation.id) %>
+        <%= link_to "(modifier,", modifier_evaluation_path(:id => evaluation.id) %>
+        <%= link_to "supprimer)", evaluation, :confirm => 'Supprimez le test?', method: :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Creez une nouvelle evaluation", nouvelle_evaluation_path, class: "btn btn-large btn-primary" %>

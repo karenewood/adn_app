@@ -3,6 +3,9 @@ class Exercise < ActiveRecord::Base
   belongs_to :user
   has_many :prescriptions
   has_many :eval_tests, :through => :prescriptions
+  has_many :exercise_sets
+  has_many :programmes, :through => :exercise_set
+
   validates :user_id, presence: true
   validates :name, presence: true
   validates :description, presence: true, length: { maximum: 350 }
