@@ -8,16 +8,30 @@
           <li><%= link_to "Decouvrir", decouvrir_path %></li>
           <li><%= link_to "Avantages", avantages_path %></li>
           <% if signed_in? %>
-            <li id="fat-menu" class="dropdown">
+          <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Evaluations <b class="caret"></b>
+                Coaches <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                <li><%= link_to "Equipes", equipes_path %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                EntraineurADN <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Evaluation athlete", evaluation_athlete_path %></li>
+                <li><%= link_to "Evaluation equipe", evaluation_equipe_path %></li>
+                <li class="divider"></li>
                 <li><%= link_to "Tests", eval_tests_path %></li>
                 <li><%= link_to "Exercices", exercises_path %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Evaluations", evaluations_path %></li>
                 <li><%= link_to "Programmes", programmes_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Resultats", resultats_path %></li>
+                <li><%= link_to "Types dEquipes", equipe_types_path %></li>
               </ul>
             </li>
             <li id="fat-menu" class="dropdown">

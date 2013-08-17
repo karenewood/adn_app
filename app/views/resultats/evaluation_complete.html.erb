@@ -1,0 +1,43 @@
+<% provide(:title, 'Evaluation Complete') %>
+<h1>Evaluation Complete!</h1>
+</br>
+</br>
+Evaluation: <%= @first_record.evaluation.name %>
+</br>
+Date: <%= @first_record.created_at.strftime("%e %b, %Y, %H:%M") %>
+</br>
+Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
+</br>
+Equipe: 
+<% if @first_record.equipe != nil %>
+  <%= link_to @first_record.equipe.name, @first_record.equipe %>
+<% else %>
+  evaluation individuelle
+<% end %>
+</br>
+</br>
+<table class="resultats">
+    <tr>
+      <th>Athlete--------------------</th>
+      <th>Test-----------------------</th>
+      <th>Resultat</th>
+      <th>--------</th>
+    </tr>
+
+  <% @resultats_final.each do |resultat| %>
+      <tr>
+        <td><%= link_to resultat.athlete.name, resultat.athlete %></td>
+        <td><%= link_to resultat.eval_test.name, resultat.eval_test %></td>
+        <td><%= resultat.value %></td>
+      <% if correct_resultat_user?(resultat.id) %>
+        <td><%= link_to "(modifier,", modifier_resultat_path(:id => resultat.id) %>
+        <%= link_to "supprimer)", resultat, :confirm => 'Supprimez le resultat?', method: :delete %>
+        </td>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+</br>
+</br>
+</br>
+  <%= link_to "Retour a l index des restultats", resultats_path %>

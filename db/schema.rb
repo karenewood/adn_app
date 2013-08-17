@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801111029) do
+ActiveRecord::Schema.define(:version => 20130805011225) do
+
+  create_table "equipe_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "equipes", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "equipe_type_id"
+    t.integer  "user_id"
+    t.integer  "organisation_id"
+    t.integer  "coach_id"
+    t.integer  "assistant_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "eval_tests", :force => true do |t|
     t.string   "name"
@@ -58,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20130801111029) do
 
   add_index "exercises", ["user_id"], :name => "index_exercises_on_user_id"
 
+  create_table "participations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "equipe_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "prescriptions", :force => true do |t|
     t.integer  "eval_test_id"
     t.integer  "exercise_id"
@@ -71,6 +96,17 @@ ActiveRecord::Schema.define(:version => 20130801111029) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resultats", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "equipe_id"
+    t.integer  "athlete_id"
+    t.integer  "evaluation_id"
+    t.integer  "eval_test_id"
+    t.integer  "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "test_sets", :force => true do |t|

@@ -15,16 +15,13 @@
       Modifier les tests inclus dans cette evaluation:
       <br />
       <br />
-      <%= hidden_field_tag "evaluation[eval_test_ids][]", nil %>
-      <% EvalTest.all.each do |eval_test| %>
-      <%= image_tag eval_test.image.url(:thumbnail) %>
-      <%= check_box_tag "evaluation[eval_test_ids][]", eval_test.id, @evaluation.eval_test_ids.include?(eval_test.id), id: dom_id(eval_test) %>
-      <%= label_tag dom_id(eval_test), eval_test.name %>
-      </br>
-      <% end %>
-      <%= f.submit "Modifier", class: "btn btn-large btn-primary" %>
-      </br>
+      <%= render 'evalcheckboxes' %>
+      <div class="submitButton">
+        <%= f.submit "Modifier", class: "btn btn-large btn-primary" %>
+        </br>
+        </br>
+        <%= link_to "Canceller et retourner a la liste d evaluations", evaluations_path %>
+      </div>
     <% end %>
-    <%= link_to "Canceller et retourner a la liste d evaluations", evaluations_path %>
   </div>
 </div>

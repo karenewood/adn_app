@@ -1,0 +1,28 @@
+<% provide(:title, @equipe.name) %>
+<h1>Equipe: <%= @equipe.name %></h1>
+</br>
+</br>
+<b>Description: <%= @equipe.description %></b>
+</br>
+</br>
+<b>Type: <%= @equipe.equipe_type.name %></b>
+</br>
+</br>
+<b>Athletes:</b>
+</br>
+<% @equipe.users.each do |user| %>
+      <%= link_to user.name, user %>
+      </br>
+      <% end %>
+</br>
+</br>
+<b>Proprietaire: <%= @equipe.user.name %></b>
+</br>
+</br>
+	<% if correct_equipe_user?(@equipe.id) %>
+    <%= link_to "modifier", modifier_equipe_path(:id => @equipe.id) %>
+    <%= link_to "supprimer", @equipe, :confirm => 'Supprimez equipe?', method: :delete %>
+	</br>
+	</br>
+	<% end %>
+<%= link_to "Retour a la liste d equipes", equipes_path %>

@@ -6,8 +6,13 @@ AdnApp::Application.routes.draw do
   resources :exercises
   resources :evaluations
   resources :programmes
-
-
+  resources :equipes
+  resources :equipe_types
+  resources :resultats do
+      post 'prise_donnees', on: :collection
+      get  'index_detail', on: :collection
+      get  'athlete', on: :collection
+  end
 
 
   root to: 'static_pages#home'
@@ -28,6 +33,12 @@ AdnApp::Application.routes.draw do
   match '/modifier_evaluation', to: 'evaluations#edit'
   match '/nouveau_programme', to: 'programmes#new'
   match '/modifier_programme', to: 'programmes#edit'
+  match '/nouvelle_equipe', to: 'equipes#new'
+  match '/modifier_equipe', to: 'equipes#edit'
+  match '/evaluation_athlete', to: 'resultats#new_athlete'
+  match '/evaluation_equipe', to: 'resultats#new_team'
+  match '/modifier_resultat', to: 'resultats#edit'
+  match '/nouveau_resultat', to: 'resultats#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -12,16 +12,11 @@
       <%= f.label :description, "Description" %>
       <%= f.text_field :description %>
 
-      <%= hidden_field_tag "programme[exercise_ids][]", nil %>
-      <% Exercise.all.each do |exercise| %>
-      <%= image_tag exercise.image.url(:thumbnail) %>
-      <%= check_box_tag "programme[exercise_ids][]", exercise.id, @programme.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
-      <%= label_tag dom_id(exercise), exercise.name %>
-      </br>
-      <% end %>
+      <%= render 'progcheckboxes' %>
       <br />
-
+      <div class="submitButton">
       <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -8,7 +8,7 @@
       <%= link_to exercise.name, exercise %> cree par:
       <%= link_to exercise.user.name, exercise.user %>
       <% if correct_exercise_user?(exercise.id) %>
-        <%= link_to "(modifier,", modifier_test_path(:id => exercise.id) %>
+        <%= link_to "(modifier,", modifier_exercise_path(:id => exercise.id) %>
         <%= link_to "supprimer)", exercise, :confirm => 'Supprimez exercise?', method: :delete %>
       <% end %>
     </li>

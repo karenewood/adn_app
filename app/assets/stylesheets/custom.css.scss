@@ -57,6 +57,10 @@ h2 {
   color: $grayLight;
 }
 
+h3 {
+  text-align: center;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -172,4 +176,49 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+.styled-select select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 1;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.checkboxes label
+{
+    display: inline;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+.imagecheckbox-grid li {
+    display: block;
+    float: left;
+    width: 33%;
+}
+
+.submitButton{
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+table.donnees{
+    margin-left:auto; 
+    margin-right:auto;
+    body {text-align:center;}
 }

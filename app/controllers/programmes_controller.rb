@@ -1,5 +1,5 @@
 class ProgrammesController < ApplicationController
-def new
+  def new
     @programme = Programme.new
   end
 

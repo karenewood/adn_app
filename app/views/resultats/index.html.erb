@@ -1,0 +1,22 @@
+<% provide(:title, 'Index des resultats') %>
+<h1>Index des resultats</h1>
+
+<table class="resultats">
+    <tr>
+      <th>Date-----------------------</th>
+      <th>Evaluation-----------------</th>
+      <th>Evaluateur-----------------</th>
+    </tr>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% @resultats.each do |resultat| %>
+      <tr>
+        <td><%= resultat.created_at.strftime("%e %b, %Y, %H:%M") %></td>
+        <td><%= link_to resultat.evaluation.name, index_detail_resultats_path(:resultat_id => resultat.id) %></td>
+        <td><%= link_to resultat.user.name, resultat.user %></td>
+      </tr>
+    <% end %>
+  </table>
+
+

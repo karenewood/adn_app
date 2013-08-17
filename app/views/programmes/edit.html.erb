@@ -15,16 +15,14 @@
       Modifier les exercices inclus dans ce programme:
       <br />
       <br />
-      <%= hidden_field_tag "programme[exercise_ids][]", nil %>
-      <% Exercise.all.each do |exercise| %>
-      <%= image_tag exercise.image.url(:thumbnail) %>
-      <%= check_box_tag "programme[exercise_ids][]", exercise.id, @programme.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
-      <%= label_tag dom_id(exercise), exercise.name %>
-      </br>
-      <% end %>
+      <%= render 'progcheckboxes' %>
+      <div class="submitButton">
       <%= f.submit "Modifier", class: "btn btn-large btn-primary" %>
+      <br />
+      <br />
+      <%= link_to "Canceller et retourner a la liste de programmes", programmes_path %>
+      </div>
       </br>
     <% end %>
-    <%= link_to "Canceller et retourner a la liste de programmes", programmes_path %>
   </div>
 </div>

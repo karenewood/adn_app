@@ -37,18 +37,14 @@
       Changer les exercices recommandes pour ce test:
       </br>
       </br>
-      <%= hidden_field_tag "eval_test[exercise_ids][]", nil %>
-      <% Exercise.all.each do |exercise| %>
-      <%= image_tag exercise.image.url(:thumbnail) %>
-      <%= check_box_tag "eval_test[exercise_ids][]", exercise.id, @eval_test.exercise_ids.include?(exercise.id), id: dom_id(exercise) %>
-      <%= label_tag dom_id(exercise), exercise.name %>
-      </br>
-      <% end %>
+      <%= render 'exercisecheckboxes' %>
     </br>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    </br>
-    </br>
-      <%= link_to "Canceller et retourner a la liste de tests", eval_tests_path %>
+      <div class="submitButton">
+        <%= f.submit "Modifier", class: "btn btn-large btn-primary" %>
+        </br>
+        </br>
+        <%= link_to "Canceller et retourner a la liste de tests", eval_tests_path %>
+      </div>
     <% end %>
 
   </div>

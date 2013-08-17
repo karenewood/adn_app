@@ -1,0 +1,38 @@
+<% provide(:title, 'Evaluation Fonctionnelle test:') %>
+<h1>Evaluation Fonctionnelle</h1>
+
+<h3>Test:<%= @eval_test.name %><h3>
+<h3>Description:<%= @eval_test.description %><h3>
+	<%= image_tag @eval_test.image.url(:medium) %>
+  </br>
+  </br>
+
+  <table class="donnees">
+    <tr>
+      <th>---Athlete---</th>
+      <th>Blessure</th>
+      <th>---1---</th>
+      <th>---2---</th>
+      <th>---3---</th>
+    </tr>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_tag (prise_donnees_resultats_path) do %>
+    <% @resultats.each do |resultat| %>
+      <%= fields_for "resultats[]", resultat do |f| %>
+      <tr>
+        <td><%= resultat.athlete.name %></td>
+        <td><%= f.radio_button :value, 0 %></td>
+        <td><%= f.radio_button :value, 1 %></td>
+        <td><%= f.radio_button :value, 2 %></td>
+        <td><%= f.radio_button :value, 3 %></td>
+        <td><%= f.radio_button :value, 99 %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <div class="submitButton">
+    <%= submit_tag "Continue...", class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

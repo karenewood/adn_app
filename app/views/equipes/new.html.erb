@@ -1,0 +1,24 @@
+<% provide(:title, 'Nouvealle equipe') %>
+<h1>Nouvelle equipe</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@equipe) do |f| %>
+    <%= render 'shared/equipe_error_messages' %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+
+      <%= f.label :equipe_type, "Type dEquipe" %>
+      <div class="styled-select">
+        <%= f.collection_select :equipe_type_id, EquipeType.all, :id, :name %>
+      </div>
+
+      <br />
+      <%= f.submit "Creer", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

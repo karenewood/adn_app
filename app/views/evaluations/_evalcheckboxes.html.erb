@@ -1,0 +1,12 @@
+<%= hidden_field_tag "evaluation[eval_test_ids][]", nil %>
+      <div>
+        <ul class="imagecheckbox-grid">
+        <% EvalTest.order(:name).each do |eval_test| %>
+        <li>
+          <%= image_tag eval_test.image.url(:thumbnail) %>
+          <%= check_box_tag "evaluation[eval_test_ids][]", eval_test.id, @evaluation.eval_test_ids.include?(eval_test.id), id: dom_id(eval_test) %>
+          <%= label_tag dom_id(eval_test), eval_test.name %>
+        </li>
+          <% end %>
+        </ul>
+      </div>

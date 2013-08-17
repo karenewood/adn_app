@@ -1,0 +1,17 @@
+<% provide(:title, 'Index des equipes') %>
+<h1>Index des equipes</h1>
+
+<ul class="equipes">
+  <% @equipes.each do |equipe| %>
+    <li>
+      <%= link_to equipe.name, equipe %> cree par:
+      <%= link_to equipe.user.name, equipe.user %>
+      <% if correct_equipe_user?(equipe.id) %>
+        <%= link_to "(modifier,", modifier_equipe_path(:id => equipe.id) %>
+        <%= link_to "supprimer)", equipe, :confirm => 'Supprimez l equipe?', method: :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Creez une nouvelle equipe", nouvelle_equipe_path, class: "btn btn-large btn-primary" %>

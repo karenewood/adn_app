@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :exercises
   has_many :evaluations
   has_many :programmes
+  has_many :participations, :dependent => :destroy
+  has_many :equipes, :through => :participations
+  has_many :ownedteams, :class_name => "Equipe"
+  has_many :resultats
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

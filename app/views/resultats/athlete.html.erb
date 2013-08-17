@@ -1,0 +1,34 @@
+<% provide(:title, 'Resultats pour athlete') %>
+<h1>Resultats pour <%= @first_record.athlete.name %></h1>
+</br>
+</br>
+Evaluation: <%= @first_record.evaluation.name %>
+</br>
+Date: <%= @first_record.created_at.strftime("%e %b, %Y, %H:%M") %>
+</br>
+Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
+</br>
+</br>
+</br>
+<table class="resultats">
+    <tr>
+      <th>Img----</th>
+      <th>---</th>
+      <th>Test-----------------------</th>
+      <th>Resultat</th>
+    </tr>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% @resultats.each do |resultat| %>
+      <tr>
+        <td><%= image_tag resultat.eval_test.image.url(:thumbnail) %><td>
+        <td><%= link_to resultat.eval_test.name, resultat.eval_test %></td>
+        <td><%= resultat.value %></td>
+      </tr>
+    <% end %>
+  </table>
+</br>
+</br>
+</br>
+  <%= link_to "Retour a l index des restultats", resultats_path %>
