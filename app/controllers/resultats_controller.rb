@@ -11,7 +11,7 @@ class ResultatsController < ApplicationController
   def index
     @resultats = Resultat.select("date(created_at) as eval_day, evaluation_id, user_id, min(id) as id").
                           group("eval_day, evaluation_id, user_id").
-                          order("created_at DESC")  
+                          order("eval_day DESC")  
     params[:results] = @resultats                
   end
 
