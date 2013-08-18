@@ -9,9 +9,10 @@ class ResultatsController < ApplicationController
   end
 
   def index
-    @resultats = Resultat.select("date(created_at) as created_at, evaluation_id, user_id, min(id) as id").
-                          group("created_at, evaluation_id, user_id").
-                          order("created_at DESC")                  
+    @resultats = Resultat.select("date(created_at) as eval_day, evaluation_id, user_id, min(id) as id").
+                          group("eval_day, evaluation_id, user_id").
+                          order("created_at DESC")  
+    params[:results] = @resultats                
   end
 
   def index_detail

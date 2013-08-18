@@ -12,7 +12,7 @@
   <div class="span6 offset3">
     <% @resultats.each do |resultat| %>
       <tr>
-        <td><%= resultat.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= resultat.eval_day %></td>
         <td><%= link_to resultat.evaluation.name, index_detail_resultats_path(:resultat_id => resultat.id) %></td>
         <td><%= link_to resultat.user.name, resultat.user %></td>
       </tr>
