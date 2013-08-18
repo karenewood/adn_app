@@ -1,5 +1,5 @@
 <% provide(:title, 'Resultats pour athlete') %>
-<h1>Resultats pour <%= @first_record.athlete.name %></h1>
+<h1>Resultats pour <%= link_to @first_record.athlete.name, @first_record.athlete %></h1>
 </br>
 </br>
 Evaluation: <%= @first_record.evaluation.name %>
