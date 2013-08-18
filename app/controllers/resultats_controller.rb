@@ -9,8 +9,8 @@ class ResultatsController < ApplicationController
   end
 
   def index
-    @resultats = Resultat.select("created_at, evaluation_id, user_id, min(id) as id").
-                          group("date(created_at), evaluation_id, user_id").
+    @resultats = Resultat.select("date(created_at) as created_at, evaluation_id, user_id, min(id) as id").
+                          group("created_at, evaluation_id, user_id").
                           order("created_at DESC")                  
   end
 
@@ -101,7 +101,8 @@ class ResultatsController < ApplicationController
             else
             @resultats_final = Resultat.where("created_at >= ?", 2.hours.ago).
                                         where(:user_id => current_user.id,
-                                              :equipe_id => session[:equipe_id])
+                                              :equipe_id => session[:equipe_id]).
+                                        order("athlete_id")
             end
             @first_record = @resultats_final.first
             render 'evaluation_complete'
