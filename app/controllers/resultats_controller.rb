@@ -9,10 +9,9 @@ class ResultatsController < ApplicationController
   end
 
   def index
-    @resultats = Resultat.order("created_at DESC", "evaluation_id ASC", "user_id ASC").group("date(created_at), 
-                                                                                              evaluation_id, 
-                                                                                              user_id")
-    @index_detail = false
+    @resultats = Resultat.select("created_at, evaluation_id, user_id, min(id) as id").
+                          group("date(created_at), evaluation_id, user_id").
+                          order("created_at DESC")                  
   end
 
   def index_detail
@@ -23,8 +22,12 @@ class ResultatsController < ApplicationController
     @resultats = Resultat.where(:evaluation_id => eval_id, 
                                 :user_id => evaluator,
                                 :created_at => (timestamp - 2.hours)..(timestamp + 2.hours)).
-                                group("athlete_id").
-                                order("equipe_id ASC")
+                          select("athlete_id, equipe_id, min(created_at) as created_at, 
+                                                         min(evaluation_id) as evaluation_id,
+                                                         min(user_id) as user_id, 
+                                                         min(id) as id").
+                          group("athlete_id, equipe_id").
+                          order("equipe_id ASC")
   end
 
   def athlete
