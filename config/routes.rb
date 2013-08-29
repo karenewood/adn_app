@@ -12,6 +12,7 @@ AdnApp::Application.routes.draw do
       post 'prise_donnees', on: :collection
       get  'index_detail', on: :collection
       get  'athlete', on: :collection
+      get  'programme_corrective', on: :collection
   end
 
 

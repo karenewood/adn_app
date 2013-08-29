@@ -12,7 +12,6 @@ class ResultatsController < ApplicationController
     @resultats = Resultat.select("date(created_at) as eval_day, evaluation_id, user_id, min(id) as id").
                           group("eval_day, evaluation_id, user_id").
                           order("eval_day DESC")  
-    params[:results] = @resultats                
   end
 
   def index_detail
@@ -41,6 +40,25 @@ class ResultatsController < ApplicationController
                                 :user_id => evaluator,
                                 :created_at => (timestamp - 2.hours)..(timestamp + 2.hours),
                                 :athlete_id => athlete_id)
+  end
+
+  def programme_corrective
+    @first_record = Resultat.find(params[:resultat_id])
+    timestamp = @first_record.created_at
+    eval_id = @first_record.evaluation_id
+    athlete_id = @first_record.athlete_id
+    evaluator = @first_record.user_id
+    resultats = Resultat.where(:evaluation_id => eval_id, 
+                                :user_id => evaluator,
+                                :created_at => (timestamp - 2.hours)..(timestamp + 2.hours),
+                                :athlete_id => athlete_id)
+    @exercises = Array.new
+    resultats.each do |resultat|
+      resultat.eval_test.exercises.each do |exercise|
+        @exercises << exercise
+      end
+    end
+    params[:exercises] = @exercises
   end
 
 

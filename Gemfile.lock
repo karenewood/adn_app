@@ -37,7 +37,8 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
     builder (3.0.4)
@@ -186,7 +187,7 @@ DEPENDENCIES
   annotate (= 2.5.0)
   aws-sdk
   bcrypt-ruby (= 3.0.1)
-  bootstrap-sass (= 2.1)
+  bootstrap-sass (~> 2.3.2.2)
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
@@ -201,7 +202,7 @@ DEPENDENCIES
   rb-notifu (= 0.0.4)
   rmagick (= 2.13.2)
   rspec-rails (= 2.11.0)
-  sass-rails (= 3.2.5)
+  sass-rails (>= 3.2)
   sqlite3 (= 1.3.5)
   uglifier (= 1.2.3)
   will_paginate (= 3.0.3)

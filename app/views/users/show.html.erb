@@ -9,3 +9,51 @@
     </section>
   </aside>
 </div>
+<% if @resultats!= [] %>
+Resultats des Evaluations:
+<table class="resultats">
+    <tr>
+      <th>Evaluation--------------------</th>
+      <th>Equipe-------------</th>
+      <th>Date---------------</th>
+      <th>Evaluateur-----------------</th>
+    </tr>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% @resultats.each do |resultat| %>
+      <tr>
+        <td><%= link_to resultat.evaluation.name, athlete_resultats_path(:resultat_id => resultat.id) %></td>
+        <% if resultat.equipe != nil %>
+        <td><%= link_to resultat.equipe.name, resultat.equipe %></td>
+        <% else %>
+        <td>evaluation individuelle</td>
+        <% end %>
+        <td><%= resultat.eval_day%></td>
+        <td><%= link_to resultat.user.name, resultat.user %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</br>
+</br>
+</br>
+  <% if @equipes!= [] %>
+  Participe dans ces equipes:
+<table class="equipes">
+    <tr>
+      <th>Equipe--------------------</th>
+      <th>Coach-----------------</th>
+    </tr>
+
+<div class="row">
+  <div class="span6 offset3">
+    <% @equipes.each do |equipe| %>
+      <tr>
+        <td><%= link_to equipe.name, equipe %></td>
+        <td><%= link_to equipe.user.name, equipe.user %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</br>
