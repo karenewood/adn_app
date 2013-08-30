@@ -9,6 +9,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'chart-js-rails'
 
 group :development, :test do
   gem 'annotate', '2.5.0'

@@ -40,6 +40,14 @@ class ResultatsController < ApplicationController
                                 :user_id => evaluator,
                                 :created_at => (timestamp - 2.hours)..(timestamp + 2.hours),
                                 :athlete_id => athlete_id)
+    @labels = Array.new
+    @chart_data = Array.new
+    @resultats.each do |resultat|
+        @labels << resultat.eval_test.name.to_s
+        @chart_data << resultat.value
+    end
+    params[:labels] = @labels
+    params[:chart_data] = @chart_data
   end
 
   def programme_corrective
