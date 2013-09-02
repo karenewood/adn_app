@@ -1,19 +1,53 @@
-<% provide(:title, 'Programme Corrective') %>
+<% provide(:title, 'Solution Corrective') %>
+</br>
+<h1>Solution Corrective pour <%= link_to @first_record.athlete.name, @first_record.athlete %></h1>
+</br>
+Evaluation: <%= @first_record.evaluation.name %>
+</br>
+Date: <%= @first_record.created_at.strftime("%e %b, %Y, %H:%M") %>
+</br>
+Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
+</br>
+Score: <%= @score %>
 </br>
 </br>
 <table class="exercices">
     <tr>
-      <th>Img----</th>
-      <th>---</th>
-      <th>Exercice-----------------------</th>
+      <th WIDTH="75">Test-------</th>
+      <th>Exercises---</th>
+      <th>------------</th>
+      <th>------------</th>
+      <th>------------</th>
     </tr>
 
 <div class="row">
   <div class="span6 offset3">
-    <% @exercises.each do |exercise| %>
-      <tr>
-        <td><%= image_tag exercise.image.url(:thumbnail) %><td>
-        <td><%= exercise.name %></td>
-      </tr>
+    <% @tests.each do |test| %>
+    <tr>
+      <td></td>
+      <% test.exercises.each do |exercise| %>
+      <td><%= exercise.short_name %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td><%= test.name %></td>
+      <% test.exercises.each do |exercise| %>
+          <td><%= image_tag exercise.image.url(:thumbnail) %></td>
+          <% end %>
+    </tr>
+    <tr>
+      <td></td>
+      <% test.exercises.each do |exercise| %>
+      <td><%= exercise.short_desc %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>-------------</td>
+      <td>--------------</td>
+      <td>-------------</td>
+      <td>-------------</td>
+      <td>-------------</td>
+    </tr>
+    <tr>
     <% end %>
   </table>

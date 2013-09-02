@@ -5,7 +5,7 @@ jQuery ->
 	data =
   		labels: $('#resultatsGraph').data('labels')
   		datasets: [
-    		fillColor: "rgba(0,128,128,0.2)"
+    		fillColor: "rgba(255,255,255,0)"
     		strokeColor: "rgba(0,128,128,0.5)"
     		pointColor: "rgba(0,128,128,0.7)"
     		pointStrokeColor: "#fff"
@@ -23,5 +23,6 @@ jQuery ->
 		scaleLineWidth : 2
 		angleLineColor : "rgba(0,0,0,.2)",
 		scaleLineColor : "rgba(0,0,0,.2)",
-		scaleBackdropColor : "rgba(255,255,255,0)"
+		scaleBackdropColor : "rgba(255,255,255,0)",
+		datasetFill : false
 		)

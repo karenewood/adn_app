@@ -13,6 +13,7 @@
 Resultats des Evaluations:
 <table class="resultats">
     <tr>
+      <th>Score--</th>
       <th>Evaluation--------------------</th>
       <th>Equipe-------------</th>
       <th>Date---------------</th>
@@ -23,6 +24,7 @@ Resultats des Evaluations:
   <div class="span6 offset3">
     <% @resultats.each do |resultat| %>
       <tr>
+        <td><%= resultat.score%></td>
         <td><%= link_to resultat.evaluation.name, athlete_resultats_path(:resultat_id => resultat.id) %></td>
         <% if resultat.equipe != nil %>
         <td><%= link_to resultat.equipe.name, resultat.equipe %></td>

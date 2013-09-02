@@ -14,6 +14,8 @@ Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
     <tr>
       <th>Athlete-----------------------</th>
       <th>Equipe-----------------------</th>
+      <th>Score-----------------------</th>
+
     </tr>
 
 <div class="row">
@@ -26,6 +28,7 @@ Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
         <% else %>
         <td>evaluation individuelle</td>
         <% end %>
+        <td><%= resultat.score %></td>
       </tr>
     <% end %>
   </table>

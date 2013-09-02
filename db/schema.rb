@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805011225) do
+ActiveRecord::Schema.define(:version => 20130901232553) do
 
   create_table "equipe_types", :force => true do |t|
     t.string   "name"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20130805011225) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "short_desc"
+    t.string   "short_name"
   end
 
   add_index "exercises", ["user_id"], :name => "index_exercises_on_user_id"

@@ -25,7 +25,8 @@ class ResultatsController < ApplicationController
                           select("athlete_id, equipe_id, min(created_at) as created_at, 
                                                          min(evaluation_id) as evaluation_id,
                                                          min(user_id) as user_id, 
-                                                         min(id) as id").
+                                                         min(id) as id,
+                                                         sum(value) as score").
                           group("athlete_id, equipe_id").
                           order("equipe_id ASC")
   end
@@ -42,12 +43,12 @@ class ResultatsController < ApplicationController
                                 :athlete_id => athlete_id)
     @labels = Array.new
     @chart_data = Array.new
+    @score = 0
     @resultats.each do |resultat|
         @labels << resultat.eval_test.name.to_s
         @chart_data << resultat.value
+        @score += resultat.value
     end
-    params[:labels] = @labels
-    params[:chart_data] = @chart_data
   end
 
   def programme_corrective
@@ -60,13 +61,12 @@ class ResultatsController < ApplicationController
                                 :user_id => evaluator,
                                 :created_at => (timestamp - 2.hours)..(timestamp + 2.hours),
                                 :athlete_id => athlete_id)
-    @exercises = Array.new
+    @tests = Array.new
+    @score = 0
     resultats.each do |resultat|
-      resultat.eval_test.exercises.each do |exercise|
-        @exercises << exercise
-      end
+      @tests << resultat.eval_test
+      @score += resultat.value
     end
-    params[:exercises] = @exercises
   end
 
 

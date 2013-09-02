@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @resultats = Resultat.where(:athlete_id => @user.id).
-                          select("date(created_at) as eval_day, evaluation_id, user_id, equipe_id, min(id) as id").
+                          select("date(created_at) as eval_day, 
+                                  evaluation_id, 
+                                  user_id, 
+                                  equipe_id, 
+                                  min(id) as id,
+                                  sum(value) as score").
                           group("eval_day, evaluation_id, user_id, equipe_id").
                           order("eval_day DESC")  
     @equipes = @user.equipes

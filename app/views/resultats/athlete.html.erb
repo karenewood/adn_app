@@ -3,7 +3,7 @@
 <% provide(:title, 'Resultats pour athlete') %>
 <body>
 <h1>Resultats pour <%= link_to @first_record.athlete.name, @first_record.athlete %></h1>
-</br>
+<h1>Score: <%= @score %></h1>
 </br>
 Evaluation: <%= @first_record.evaluation.name %>
 </br>
@@ -11,13 +11,14 @@ Date: <%= @first_record.created_at.strftime("%e %b, %Y, %H:%M") %>
 </br>
 Evaluateur: <%= link_to @first_record.user.name, @first_record.user %>
 </br>
+</br>
 <td><%= link_to "Programme Corrective", programme_corrective_resultats_path(:resultat_id => @first_record.id) %></td>
 </br>
 <%= content_tag "canvas", id: "resultatsGraph", 
                           width: "500", 
                           height:"500", 
                           data: {labels: @labels, values: @chart_data} do %>
-  Loading products...
+  Loading graphic...
 <% end %>
 <table class="resultats">
     <tr>

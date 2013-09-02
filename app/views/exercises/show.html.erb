@@ -1,8 +1,13 @@
 <% provide(:title, @exercise.name) %>
-<h1>Exercice: <%= @exercise.name %></h1>
+<h1>Exercise: <%= @exercise.name %></h1>
+</br>
+<b>Nom Court: <%= @exercise.short_name %></b>
 </br>
 </br>
 <%= image_tag @exercise.image.url(:medium) %>
+</br>
+</br>
+<b>Prescription: <%= @exercise.short_desc %></b>
 </br>
 </br>
 <b>Description: <%= @exercise.description %></b>
@@ -42,4 +47,4 @@
 	</br>
 	</br>
 	<% end %>
-<%= link_to "Retour a la liste d exercises", exercises_path %>
+<%= link_to "Retour \à la liste d\'exercises", exercises_path %>

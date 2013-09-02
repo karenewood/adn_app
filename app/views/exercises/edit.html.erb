@@ -1,4 +1,4 @@
-<% provide(:title, "Modifier Exercise") %>
+<% provide(:title, "Modifier l\'Exercise") %>
 <h1>Modifier Exercise</h1>
 
 <div class="row">
@@ -9,9 +9,14 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
+      <%= f.label :short_name, "Nom Court (10 Charact\ères)" %>
+      <%= f.text_field :short_name %>
+
       <%= f.label :description %>
       <%= f.text_field :description %>
 
+      <%= f.label :short_desc, "Prescription (10 Charact\ères)" %>
+      <%= f.text_field :short_desc %>
 
       <%= f.label :image %>
       <%= image_tag @exercise.image.url(:medium) %>
@@ -36,7 +41,7 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
       </br>
       </br>
-      <%= link_to "Canceller et retourner a la liste d exercises", exercises_path %>
+      <%= link_to "Canceller et retourner \à la liste d\'exercises", exercises_path %>
     <% end %>
 
   </div>
